@@ -3,6 +3,7 @@ package com.xworkz.event.repository;
 import com.xworkz.event.entity.EventEntity;
 
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.List;
 
 public class EventRepoImpl implements EventRepository {
@@ -115,6 +116,82 @@ public class EventRepoImpl implements EventRepository {
             if (em != null) em.close();
         }
         return events;
+    }
+
+    @Override
+    public List<String> getEventName() {
+        EntityManager entityManager=null;
+        List<String> ref=null;
+        try {
+            ref=emf.createEntityManager().createNamedQuery("findEventName").getResultList();
+
+        }catch (PersistenceException e){
+            ref=Collections.emptyList();
+
+        }finally {
+            if(entityManager!=null){
+                entityManager.close();
+            }
+
+        }
+        return ref;
+    }
+
+    @Override
+    public List<Double> getEventBudget() {
+        EntityManager entityManager=null;
+        List<Double> ref=null;
+        try {
+            ref=emf.createEntityManager().createNamedQuery("findEventBudget").getResultList();
+
+        }catch (PersistenceException e){
+            ref=Collections.emptyList();
+
+        }finally {
+            if(entityManager!=null){
+                entityManager.close();
+            }
+
+        }
+        return ref;
+    }
+
+    @Override
+    public List<Object> getEventDate() {
+        EntityManager entityManager=null;
+        List<Object> ref=null;
+        try {
+            ref=emf.createEntityManager().createNamedQuery("findEventDate").getResultList();
+
+        }catch (PersistenceException e){
+            ref=Collections.emptyList();
+
+        }finally {
+            if(entityManager!=null){
+                entityManager.close();
+            }
+
+        }
+        return ref;
+    }
+
+    @Override
+    public List<Object[]> getEventOrganiserAndSponsor() {
+        EntityManager entityManager=null;
+        List<Object[]> ref=null;
+        try {
+            ref=emf.createEntityManager().createNamedQuery("findEventOrganiserAndSponsor").getResultList();
+
+        }catch (PersistenceException e){
+            ref=Collections.emptyList();
+
+        }finally {
+            if(entityManager!=null){
+                entityManager.close();
+            }
+
+        }
+        return ref;
     }
 
     @Override

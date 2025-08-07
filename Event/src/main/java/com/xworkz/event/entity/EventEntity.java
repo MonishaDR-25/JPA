@@ -18,7 +18,11 @@ import java.time.LocalDate;
 @NamedQuery(name = "findByLocation", query = "SELECT e FROM EventEntity e WHERE e.location = :loc")
 @NamedQuery(name = "findByBudget", query = "SELECT e FROM EventEntity e WHERE e.budget = :bud")
 @NamedQuery(name = "getEventEntity", query = "SELECT e FROM EventEntity e")
-
+@NamedQuery(name = "findEventName",query = "select e.name from EventEntity e")
+@NamedQuery(name = "findEventName",query = "select e.name from EventEntity e")
+@NamedQuery(name = "findEventBudget",query = "select e.budget from EventEntity e")
+@NamedQuery(name = "findEventDate",query = "select e.date from EventEntity e")
+@NamedQuery(name = "findEventOrganiserAndSponsor",query = "select e.organiser,e.sponsor from EventEntity e")
 public class EventEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

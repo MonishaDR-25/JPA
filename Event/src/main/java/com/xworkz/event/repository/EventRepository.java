@@ -11,6 +11,10 @@ public interface EventRepository {
     EventEntity getEventByLocation(String location);
     EventEntity getEventByBudget(double budget);
     List<EventEntity> getEvent();
+    List<String> getEventName();
+    List<Double> getEventBudget();
+    List<Object> getEventDate();
+    List<Object[]> getEventOrganiserAndSponsor();
     void updateEventById(int id, String newName);
     void deleteById(int id);
 }

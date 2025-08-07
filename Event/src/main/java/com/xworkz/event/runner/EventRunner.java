@@ -42,6 +42,18 @@ public class EventRunner {
         List<EventEntity> ref = eventRepository.getEvent();
         System.out.println("All Events: " + ref);
 
+        List<String> name=eventRepository.getEventName();
+        name.forEach(System.out::println);
+
+        List<Double> ref0=eventRepository.getEventBudget();
+        System.out.println(ref0);
+
+        List<Object> ref1=eventRepository.getEventDate();
+        ref1.forEach(System.out::println);
+
+        List<Object[]> ref2=eventRepository.getEventOrganiserAndSponsor();
+        ref2.stream().map(r->"Organiser:"+r[0]+"Sponsor:"+r[1]).forEach(System.out::println);
+
         EventEntity read = eventRepository.readById(2);
         System.out.println("Read by ID 2: " + read);
 
