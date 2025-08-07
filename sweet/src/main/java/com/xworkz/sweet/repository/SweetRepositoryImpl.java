@@ -3,6 +3,7 @@ package com.xworkz.sweet.repository;
 import com.xworkz.sweet.entity.SweetEntity;
 
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.List;
 
 public class SweetRepositoryImpl implements SweetRepository {
@@ -85,6 +86,78 @@ public class SweetRepositoryImpl implements SweetRepository {
         } finally {
             em.close();
         }
+    }
+
+    @Override
+    public List<String> getSweetName() {
+        EntityManager entityManager=null;
+        List<String> ref=null;
+        try {
+            ref=emf.createEntityManager().createNamedQuery("getSweetName").getResultList();
+
+        }catch (PersistenceException e){
+            ref=Collections.emptyList();
+
+        }finally {
+            if(entityManager!=null){
+                entityManager.close();
+            }
+        }
+        return Collections.emptyList();
+    }
+
+    @Override
+    public List<Integer> getSweetCost() {
+        EntityManager entityManager=null;
+        List<Integer> ref=null;
+        try {
+            ref=emf.createEntityManager().createNamedQuery("getSweetCost").getResultList();
+
+        }catch (PersistenceException e){
+            ref=Collections.emptyList();
+
+        }finally {
+            if(entityManager!=null){
+                entityManager.close();
+            }
+        }
+        return Collections.emptyList();
+    }
+
+    @Override
+    public List<Object> getSweetMadeDate() {
+        EntityManager entityManager=null;
+        List<Object> ref=null;
+        try {
+            ref=emf.createEntityManager().createNamedQuery("getSweetMadeDate").getResultList();
+
+        }catch (PersistenceException e){
+            ref=Collections.emptyList();
+
+        }finally {
+            if(entityManager!=null){
+                entityManager.close();
+            }
+        }
+        return Collections.emptyList();
+    }
+
+    @Override
+    public List<Object[]> getSweetTyeAndIngredient() {
+        EntityManager entityManager=null;
+        List<Object[]> ref=null;
+        try {
+            ref=emf.createEntityManager().createNamedQuery("getSweetTypeAndIngredients").getResultList();
+
+        }catch (PersistenceException e){
+            ref=Collections.emptyList();
+
+        }finally {
+            if(entityManager!=null){
+                entityManager.close();
+            }
+        }
+        return Collections.emptyList();
     }
 
     @Override

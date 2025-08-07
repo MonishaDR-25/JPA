@@ -38,6 +38,19 @@ public class SweetRunner {
         SweetEntity byType = repo.findByType("Traditional");
         System.out.println("Find by type: " + byType);
 
+
+        List<String> name=repo.getSweetName();
+        name.forEach(System.out::println);
+
+        List<Integer> ref0=repo.getSweetCost();
+        System.out.println(ref0);
+
+        List<Object> ref1=repo.getSweetMadeDate();
+        ref1.forEach(System.out::println);
+
+        List<Object[]> ref2=repo.getSweetTyeAndIngredient();
+        ref2.stream().map(r->"Type:"+r[0]+"Ingredients:"+r[1]).forEach(System.out::println);
+
         List<SweetEntity> all = repo.findAll();
         System.out.println("All Sweets: " + all);
 

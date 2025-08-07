@@ -18,6 +18,10 @@ import java.time.LocalDate;
 @NamedQuery(name = "findByMadeBy", query = "SELECT s FROM SweetEntity s WHERE s.madeBy = :mb")
 @NamedQuery(name = "findByType", query = "SELECT s FROM SweetEntity s WHERE s.type = :tp")
 @NamedQuery(name = "getAllSweets", query = "SELECT s FROM SweetEntity s")
+@NamedQuery(name = "getSweetName",query = "select s.name from SweetEntity s")
+@NamedQuery(name = "getSweetCost",query = "select s.cost from SweetEntity s")
+@NamedQuery(name = "getSweetMadeDate",query = "select s.madeDate from SweetEntity s")
+@NamedQuery(name = "getSweetTypeAndIngredients",query = "select s.type,s.ingredients from SweetEntity s")
 public class SweetEntity {
 
     @Id
