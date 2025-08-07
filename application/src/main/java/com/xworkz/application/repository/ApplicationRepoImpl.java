@@ -152,6 +152,24 @@ public class ApplicationRepoImpl implements ApplicationRepository {
     }
 
     @Override
+    public List<String[]> getApplicationNameAndSize() {
+        EntityManager entityManager=null;
+        List<String[]> ref=null;
+        try{
+            ref=entityManagerFactory.createEntityManager().createNamedQuery("getApplicationNameAndSize").getResultList();
+
+        }catch (PersistenceException e){
+            ref=Collections.emptyList();
+
+        }finally {
+            if(entityManager!=null){
+                entityManager.close();
+            }
+            return ref;
+        }
+    }
+
+    @Override
     public void saveApplication(ApplicationEntity applicationEntity) {
         System.out.println("Running save in ApplicationRepositoryImpl"+applicationEntity);
         EntityManager entityManager = null;

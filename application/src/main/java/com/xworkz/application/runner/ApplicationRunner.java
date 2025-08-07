@@ -19,15 +19,15 @@ public class ApplicationRunner {
         applicationEntity.setNoOfUsers(9000);
         applicationEntity.setRatings(5.6F);
         applicationEntity.setLaunchDate(LocalDate.of(2023, 6, 15));
-        ApplicationEntity read = applicationRepository.getApplicationByName("Amazon");
-       System.out.println(read);
-      ApplicationEntity sizeEntity=applicationRepository.getApplicationBySize("Large");
-       System.out.println(sizeEntity);
-        List<ApplicationEntity> ref=applicationRepository.getApplication();
-        System.out.println(ref);
-
-        List<String> ref=applicationRepository.getApplicationName();
-        ref.forEach(System.out::println);
+//        ApplicationEntity read = applicationRepository.getApplicationByName("Amazon");
+//       System.out.println(read);
+//      ApplicationEntity sizeEntity=applicationRepository.getApplicationBySize("Large");
+//       System.out.println(sizeEntity);
+//        List<ApplicationEntity> ref=applicationRepository.getApplication();
+//        System.out.println(ref);
+//
+        List<String> ref10=applicationRepository.getApplicationName();
+        ref10.forEach(System.out::println);
 
         List<Integer> ref0=applicationRepository.getApplicationNoOfUsers();
         System.out.println(ref0);
@@ -40,12 +40,15 @@ public class ApplicationRunner {
             System.out.println("Application Name:"+data[0]+"No Of Users:"+data[1]);
         }
         ref2.stream().map(r->"Name:"+r[0]+"NoOfUsers:"+r[1]).forEach(System.out::println);
+
+//        List<String[]> refer=applicationRepository.getApplicationNameAndSize();
+//        refer.stream().map(r->"Name:"+r[0]+"size:"+r[1]).forEach(System.out::println);
         //applicationRepository.saveApplication(applicationEntity);
 
         // Read
         System.out.println("Read operation");
-        ApplicationEntity read = applicationRepository.readById(1);
-        System.out.println(read);
+        ApplicationEntity getRead = applicationRepository.readById(1);
+        System.out.println(getRead);
 
         // Update
         System.out.println("Update operation");

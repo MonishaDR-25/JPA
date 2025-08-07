@@ -18,6 +18,7 @@ public interface ApplicationRepository {
     List<Integer> getApplicationNoOfUsers();
     List<Object> getApplicationDate();
     List<Object[]> getApplicationNameAndNoOfUsers();
+    List<String[]> getApplicationNameAndSize();
 
 
 }

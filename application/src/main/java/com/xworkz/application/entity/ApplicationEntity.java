@@ -18,6 +18,7 @@ import java.time.LocalDate;
 @NamedQuery(name = "getApplicationNoOfUsers",query ="select a.noOfUsers from ApplicationEntity a" )
 @NamedQuery(name = "getApplicationDate", query = "select a.launchDate from ApplicationEntity a")
 @NamedQuery(name="getApplicationNameAndNoOfUsers",query = "select a.applicationName, a.noOfUsers from ApplicationEntity a")
+@NamedQuery(name = "getApplicationNameAndSize",query = "select a.applicationName,a.applicationSize from ApplicationEntity a")
 public class ApplicationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
