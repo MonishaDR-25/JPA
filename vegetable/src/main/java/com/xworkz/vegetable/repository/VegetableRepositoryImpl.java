@@ -3,6 +3,7 @@ package com.xworkz.vegetable.repository;
 import com.xworkz.vegetable.entity.VegetableEntity;
 
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.List;
 
 public class VegetableRepositoryImpl implements VegetableRepository {
@@ -76,6 +77,81 @@ public class VegetableRepositoryImpl implements VegetableRepository {
             em.close();
         }
     }
+
+    @Override
+    public List<String> getVegetableName() {
+        EntityManager entityManager=null;
+        List<String> ref=null;
+        try {
+            ref=emf.createEntityManager().createNamedQuery("getVegetableName").getResultList();
+
+        }catch (PersistenceException e){
+            ref=Collections.emptyList();
+
+        }finally {
+            if (entityManager!=null){
+                entityManager.close();
+            }
+
+        }
+        return ref;
+    }
+
+    @Override
+    public List<Double> getVegetableCost() {
+        EntityManager entityManager=null;
+        List<Double> ref=null;
+        try{
+            ref=emf.createEntityManager().createNamedQuery("getVegetableCost").getResultList();
+
+        }catch (PersistenceException e){
+            ref=Collections.emptyList();
+
+        }finally {
+            if(entityManager!=null){
+                entityManager.close();
+            }
+
+        }
+        return ref;
+    }
+
+    @Override
+    public List<Object> getVegetableArrivalDate() {
+        EntityManager entityManager=null;
+        List<Object> ref=null;
+        try {
+            ref=emf.createEntityManager().createNamedQuery("getVegetableArrivalDate").getResultList();
+
+        }catch (PersistenceException e){
+            ref=Collections.emptyList();
+
+        }finally {
+            if(entityManager!=null){
+                entityManager.close();
+            }
+        }
+        return ref;
+    }
+
+    @Override
+    public List<Object[]> getVegetableColorAndOrigin() {
+        EntityManager entityManager=null;
+        List<Object[]> ref=null;
+        try {
+            ref=emf.createEntityManager().createNamedQuery("getVegetableColorAndOrigin").getResultList();
+
+        }catch (PersistenceException e){
+            ref=Collections.emptyList();
+
+        }finally {
+            if(entityManager!=null){
+                entityManager.close();
+            }
+        }
+        return ref;
+    }
+
 
     @Override
     public List<VegetableEntity> findAll() {

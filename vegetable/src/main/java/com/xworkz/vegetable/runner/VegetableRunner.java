@@ -38,6 +38,19 @@ public class VegetableRunner {
         VegetableEntity byType = repo.findByType("Root");
         System.out.println("By Type: " + byType);
 
+        List<String> findName= repo.getVegetableName();
+        System.out.println(findName);
+
+        List<Double> findCost= repo.getVegetableCost();
+        System.out.println(findCost);
+
+        List<Object> findDate= repo.getVegetableArrivalDate();
+        System.out.println(findDate);
+
+        List<Object[]> ref2=repo.getVegetableColorAndOrigin();
+        ref2.stream().map(r->"color:"+r[0]+"origin:"+r[1]).forEach(System.out::println);
+
+
         List<VegetableEntity> all = repo.findAll();
         System.out.println("All Vegetables: " + all);
 

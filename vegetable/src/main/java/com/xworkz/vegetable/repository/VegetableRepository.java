@@ -10,6 +10,10 @@ public interface VegetableRepository {
     VegetableEntity findByName(String name);
     VegetableEntity findByColor(String color);
     VegetableEntity findByType(String type);
+    List<String> getVegetableName();
+    List<Double> getVegetableCost();
+    List<Object> getVegetableArrivalDate();
+    List<Object[]> getVegetableColorAndOrigin();
     List<VegetableEntity> findAll();
     void updateNameById(int id, String newName);
     void deleteById(int id);

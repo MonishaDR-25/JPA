@@ -18,6 +18,10 @@ import java.time.LocalDate;
 @NamedQuery(name = "findByColor", query = "SELECT v FROM VegetableEntity v WHERE v.color = :clr")
 @NamedQuery(name = "findByType", query = "SELECT v FROM VegetableEntity v WHERE v.type = :tp")
 @NamedQuery(name = "getAllVegetables", query = "SELECT v FROM VegetableEntity v")
+@NamedQuery(name = "getVegetableName",query = "select v.name from VegetableEntity v")
+@NamedQuery(name = "getVegetableCost",query = "select v.cost from VegetableEntity v")
+@NamedQuery(name = "getVegetableArrivalDate",query = "select v.arrivalDate from VegetableEntity v")
+@NamedQuery(name = "getVegetableColorAndOrigin",query = "select v.color,v.origin from VegetableEntity v")
 public class VegetableEntity {
 
     @Id
