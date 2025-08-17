@@ -6,4 +6,5 @@ import com.xworkz.passportSeva.entity.PassportEntity;
 public interface PassportRepo {
     boolean save(PassportEntity entity);
     String fetchEmail(String email);
+    String fetchLoginId(String loginId);
 }

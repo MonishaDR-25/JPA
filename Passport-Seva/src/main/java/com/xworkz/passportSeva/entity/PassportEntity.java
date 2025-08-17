@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "passport_info")
 @NamedQuery(name = "fetchEmail",query = "select a.emailId from PassportEntity a where a.emailId=:emailId")
+@NamedQuery(name = "fetchLoginId",query = "select a.loginId from PassportEntity a where a.loginId=:loginId")
 public class PassportEntity {
 
     @Id

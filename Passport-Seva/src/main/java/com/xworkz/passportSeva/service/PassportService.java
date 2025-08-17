@@ -6,5 +6,5 @@ public interface PassportService {
     boolean validateAndSave(PassportDto dto);
 
     String fetchEmail(String email);
-    Stri
+   String fetchLoginId(String loginId);
 }

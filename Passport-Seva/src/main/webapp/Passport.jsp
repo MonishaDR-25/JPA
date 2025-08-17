@@ -33,7 +33,8 @@
     </div>
     <br>
     <div>
-        Login Id:  <input type="text" name="loginId">
+        <span id="loginiderror"></span>
+        Login Id:  <input type="text" id="loginId" name="loginId" onblur="loginId()">
     </div>
     <br>
     <div>
@@ -76,16 +77,17 @@
         };
     }
 }
-    function loginId(){
-    const loginId=document.getElementById('loginId').value;
+     function loginId() {
+    const loginId = document.getElementById('loginId').value;
+    console.log("loginId:", loginId);
 
-    if(loginId!== ""){
-        var xhttp=new XMLHttpRequest();
-        xhttp.open("GET", "http://localhost:9090/Passport-Seva/loginId?login=" +login);
+    if (loginId !== "") {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "http://localhost:9090/Passport-Seva/loginId?loginId=" + loginId);
         xhttp.send();
 
-        xhttp.onload=function(){
-            document.getElementById("loginIdError").innerHTML=this.responseText;
+        xhttp.onload = function () {
+            document.getElementById("loginerror").innerHTML = this.responseText;
         };
     }
 }

@@ -27,4 +27,16 @@ public class UserRegistrationRestController {
         return "email exists";
     }
 
+    @GetMapping("/loginId")
+   public String loginidexists(@RequestParam("loginId") String loginId){
+        System.out.println("loginId exists in restController");
+        String result= service.fetchLoginId(loginId);
+        System.out.println("fetch loginId:"+loginId);
+        System.out.println("result:"+result);
+        if(result==null){
+            return " ";
+        }
+        return "loginId exists";
+    }
+
 }

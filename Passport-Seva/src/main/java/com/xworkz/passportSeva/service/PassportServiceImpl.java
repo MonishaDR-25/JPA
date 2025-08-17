@@ -104,5 +104,11 @@ public class PassportServiceImpl implements PassportService {
         return repository.fetchEmail(email);
     }
 
+    @Override
+    public String fetchLoginId(String loginId) {
+        System.out.println("Created loginId in service");
+        return repository.fetchLoginId(loginId);
+    }
+
 
 }

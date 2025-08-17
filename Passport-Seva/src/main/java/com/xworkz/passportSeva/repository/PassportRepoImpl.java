@@ -58,6 +58,21 @@ public class PassportRepoImpl implements PassportRepo{
         return emailFetch;
     }
 
+    @Override
+    public String fetchLoginId(String loginId) {
+        EntityManager manager=null;
+        String loginIdFetch=null;
+        try {
+            manager=emf.createEntityManager();
+            loginIdFetch= (String) manager.createNamedQuery("fetchLoginId")
+                    .setParameter("loginId",loginId)
+                    .getSingleResult();
+        }catch (PersistenceException e){
+            System.out.println(e.getMessage());
+        }
+        return loginIdFetch;
+    }
+
 }
 
 
