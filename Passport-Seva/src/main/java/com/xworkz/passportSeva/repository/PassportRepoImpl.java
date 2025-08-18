@@ -73,6 +73,22 @@ public class PassportRepoImpl implements PassportRepo{
         return loginIdFetch;
     }
 
+    @Override
+    public String fetchPhoneNumber(String phoneNumber) {
+        EntityManager manager=null;
+        String phoneNumberFetch=null;
+        try {
+            manager=emf.createEntityManager();
+            phoneNumberFetch= (String) manager.createNamedQuery("fetchPhoneNumber")
+                    .setParameter("phoneNumber",phoneNumber)
+                    .getSingleResult();
+        }catch (PersistenceException e){
+            System.out.println(e.getMessage());
+        }
+        return phoneNumberFetch;
+
+    }
+
 }
 
 

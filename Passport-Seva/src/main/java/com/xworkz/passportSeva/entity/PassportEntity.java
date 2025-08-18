@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @Table(name = "passport_info")
 @NamedQuery(name = "fetchEmail",query = "select a.emailId from PassportEntity a where a.emailId=:emailId")
 @NamedQuery(name = "fetchLoginId",query = "select a.loginId from PassportEntity a where a.loginId=:loginId")
+@NamedQuery(name = "fetchPhoneNumber",query = "select a.phoneNumber from PassportEntity a where a.phoneNumber=:phoneNumber")
 public class PassportEntity {
 
     @Id
@@ -50,5 +51,5 @@ public class PassportEntity {
     private String hintAnswer;
 
     @Column(name="phone_number")
-    private Long phoneNumber;
+    private String phoneNumber;
 }

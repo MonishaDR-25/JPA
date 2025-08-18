@@ -54,7 +54,8 @@
     </div>
     <br>
     <div>
-        Phone Number:   <input type="number" name="phoneNumber">
+        <span id="phoneNumberError"></span>
+        Phone Number: <input type="number" id="phoneNumber" name="phoneNumber" onblur="phoneNumber()">
     </div>
     <br>
     <input type="submit" value="Submit">
@@ -88,6 +89,21 @@
 
         xhttp.onload = function () {
             document.getElementById("loginerror").innerHTML = this.responseText;
+        };
+    }
+}
+
+    function phoneNumber() {
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    console.log("phoneNumber:", phoneNumber);
+
+    if (phoneNumber !== "") {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "http://localhost:9090/Passport-Seva/phoneNumber?phoneNumber=" + phoneNumber);
+        xhttp.send();
+
+        xhttp.onload = function () {
+            document.getElementById("phoneNumberError").innerHTML = this.responseText;
         };
     }
 }

@@ -110,5 +110,11 @@ public class PassportServiceImpl implements PassportService {
         return repository.fetchLoginId(loginId);
     }
 
+    @Override
+    public String fetchPhoneNumber(String phoneNumber) {
+        System.out.println("Created phoneNumber in service");
+        return repository.fetchPhoneNumber(phoneNumber);
+    }
+
 
 }

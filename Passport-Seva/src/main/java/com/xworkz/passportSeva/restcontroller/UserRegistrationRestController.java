@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/user")
 public class UserRegistrationRestController {
 
     @Autowired
@@ -37,6 +37,18 @@ public class UserRegistrationRestController {
             return " ";
         }
         return "loginId exists";
+    }
+
+    @GetMapping("phonenumber")
+    public String phoneNumberexists(@RequestParam("phoneNumber") String phoneNumber){
+        System.out.println("Phone number exists in rest controller");
+        String result= service.fetchPhoneNumber(phoneNumber);
+        System.out.println("fetch phoneNumber:"+phoneNumber);
+        System.out.println("result:"+result);
+        if(result==null){
+            return "phone number not exists ";
+        }
+        return "phone number exists";
     }
 
 }

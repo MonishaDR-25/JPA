@@ -7,4 +7,5 @@ public interface PassportService {
 
     String fetchEmail(String email);
    String fetchLoginId(String loginId);
+    String fetchPhoneNumber(String phoneNumber);
 }
