@@ -1,3 +1,5 @@
+package com.xworkz.quiz;
+
 import java.util.Scanner;
 
 public class SwapNumbers {
