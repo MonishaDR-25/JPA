@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface SoapService {
     boolean validateAndSave(SoapDto soapDto);
-    String fetchSoapName(String name);
     List<SoapDto> findAllEntity();
+    SoapDto findById(Integer id);
+     String updateById(SoapDto soapDto);
+     String deleById(Integer id);
 }

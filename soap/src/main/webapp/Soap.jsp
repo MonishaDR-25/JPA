@@ -9,9 +9,6 @@
 <div>
     <a href="redirectToSoap">Soap Form</a>
 </div>
-<div>
-    <a href="redirectToView">Soap View</a>
-</div>
 <form action="soap" method="post">
     <div>
         Soap Name: <input type="text" name="name">

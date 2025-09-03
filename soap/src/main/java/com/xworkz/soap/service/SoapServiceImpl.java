@@ -29,11 +29,6 @@ public class SoapServiceImpl implements SoapService{
         return soapRepository.save(soapEntity);
     }
 
-    @Override
-    public String fetchSoapName(String name) {
-        System.out.println("Created soap name in service");
-        return soapRepository.fetchSoapName(name);
-    }
 
     @Override
     public List<SoapDto> findAllEntity() {
@@ -46,5 +41,34 @@ public class SoapServiceImpl implements SoapService{
         }).collect(Collectors.toList());
         soapDto.forEach(System.out::println);
         return soapDto;
+    }
+
+    @Override
+    public SoapDto findById(Integer id) {
+        System.out.println("Find by Id in service");
+        SoapEntity soapEntity=soapRepository.findById(id);
+        SoapDto soapDto=new SoapDto();
+        BeanUtils.copyProperties(soapEntity,soapDto);
+        return soapDto;
+    }
+
+    @Override
+    public String updateById(SoapDto soapDto) {
+        SoapEntity soapEntity=new SoapEntity();
+        BeanUtils.copyProperties(soapDto,soapEntity);
+        boolean updated= soapRepository.updateById(soapEntity);
+        if(updated){
+            return "UPDATED";
+        }
+        return "Not UPDATED";
+    }
+
+    @Override
+    public String deleById(Integer id) {
+        boolean deleted= soapRepository.deleteById(id);
+        if(deleted){
+            return "DELETED";
+        }
+        return "NOT DELETED";
     }
 }
