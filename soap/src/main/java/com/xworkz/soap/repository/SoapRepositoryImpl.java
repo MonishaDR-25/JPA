@@ -3,6 +3,7 @@ package com.xworkz.soap.repository;
 import com.xworkz.soap.dto.SoapDto;
 import com.xworkz.soap.entity.SoapEntity;
 import org.hibernate.QueryException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
@@ -16,7 +17,9 @@ public class SoapRepositoryImpl implements SoapRepository{
         System.out.println("Running SoapRepoImpl");
     }
 
-    private EntityManagerFactory emf= Persistence.createEntityManagerFactory("x-workz");
+    @Autowired
+    private EntityManagerFactory emf;
+
     @Override
     public boolean save(SoapEntity soapEntity) {
         System.out.println("Running save in repo:"+soapEntity);

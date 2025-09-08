@@ -88,7 +88,7 @@ public class SoapController {
     }
 
 
-    @PostMapping("delete")
+    @GetMapping("delete")
     public String deleteById(@RequestParam("id")Integer id,Model model){
         System.out.println("Delete by id in controller");
         String deleted=soapService.deleById(id);

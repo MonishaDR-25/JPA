@@ -7,6 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,10 +34,10 @@ public class SoapServiceImpl implements SoapService{
     @Override
     public List<SoapDto> findAllEntity() {
         List<SoapEntity> soapEntity=soapRepository.findAllEntity();
-        List<SoapDto> soapDto=null;
+        List<SoapDto> soapDto=new ArrayList<>();
         soapDto=soapEntity.stream().map(entity->{
             SoapDto soapDto1=new SoapDto();
-            BeanUtils.copyProperties(soapEntity,soapDto1);
+            BeanUtils.copyProperties(entity,soapDto1);
             return soapDto1;
         }).collect(Collectors.toList());
         soapDto.forEach(System.out::println);

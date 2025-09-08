@@ -12,7 +12,7 @@
     <persistence>2.2</persistence>
     <hibernate>5.6.15.Final</hibernate>
     <lombok>1.18.38</lombok>
-    <spring-webmvc>5.2.12.RELEASE</spring-webmvc>
+    <spring-version>5.2.12.RELEASE</spring-version>
     <servlet>4.0.1</servlet>
     <jstl>1.2</jstl>
   </properties>
@@ -51,7 +51,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>${spring-webmvc}</version>
+      <version>${spring-version}</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
     <dependency>
@@ -65,6 +65,12 @@
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
       <version>${jstl}</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>${spring-version}</version>
     </dependency>
   </dependencies>
   <build>
