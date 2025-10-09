@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Fresh Milk",
+    "description": "Pure and fresh milk delivered daily to your doorstep.",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.RBKZEv2E_i3aiwxQSRH-rgHaE8?pid=Api&P=0&h=180",
+    "price": "80"
+  },
+  {
+    "name": "Cheese",
+    "description": "Delicious and creamy cheese made from the best milk.",
+    "image": "https://i.pinimg.com/originals/ad/02/98/ad02987b2d8e8a1dd265ce8c95e54292.jpg",
+    "price": "50"
+  },
+  {
+    "name": "Curd",
+    "description": "Thick and healthy curd with natural taste and freshness.",
+    "image": "https://www.chezshuchi.com/images/homemade-dahi51.JPG",
+    "price": "45"
+  },
+  {
+    "name": "Paneer",
+    "description": "Fresh and soft paneer rich in protein, perfect for cooking delicious dishes.",
+    "image": "https://cheeseknees.com/wp-content/uploads/2021/04/paneer2-1024x1536.jpg",
+    "price": "80"
+  }
+]
