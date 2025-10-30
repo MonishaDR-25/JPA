@@ -1,5 +1,6 @@
 package com.xworkz.DairyManagement.configuration;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+@Slf4j
 @PropertySource("classpath:application.properties")
 @Configuration
 @ComponentScan("com.xworkz.DairyManagement")
@@ -30,7 +32,7 @@ public class AppConfig implements WebMvcConfigurer {
     Environment environment;
 
     public AppConfig(){
-        System.out.println("Running AppConfig");
+       log.info("Running AppConfig");
     }
 
     @Override
