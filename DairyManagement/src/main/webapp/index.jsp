@@ -124,9 +124,9 @@ pageEncoding="UTF-8"%>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="adminLoginForm">Admin Login</a></li>
-                        <li><a class="dropdown-item" href="customerLogin.jsp">Customer Login</a></li>
-                        <li><a class="dropdown-item" href="agentLogin.jsp">Agent Login</a></li>
-                        <li><a class="dropdown-item" href="registration.jsp">Registration</a></li>
+                        <li><a class="dropdown-item" href="customerLogin">Customer Login</a></li>
+                        <li><a class="dropdown-item" href="agentLogin">Agent Login</a></li>
+                        <li><a class="dropdown-item" href="registration">Registration</a></li>
                     </ul>
                 </li>
             </ul>

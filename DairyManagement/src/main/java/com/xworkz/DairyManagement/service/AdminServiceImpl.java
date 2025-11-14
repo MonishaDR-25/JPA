@@ -25,7 +25,8 @@ public class AdminServiceImpl implements AdminService{
     JavaMailSender mailSender;
 
     public AdminServiceImpl(){
-        System.out.println("Running AdminServiceImpl");
+
+        log.info("Running AdminServiceImpl");
     }
 
     @Autowired
@@ -33,11 +34,9 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public void register(AdminDto adminDto) {
-
-        AdminEntity entity=new AdminEntity();
-        BeanUtils.copyProperties(adminDto,entity);
-
-        String encodedPassword=passwordEncoder.encode(adminDto.getPassword());
+        AdminEntity entity = new AdminEntity();
+        BeanUtils.copyProperties(adminDto, entity);
+        String encodedPassword = passwordEncoder.encode(adminDto.getPassword());
         entity.setPassword(encodedPassword);
         repository.save(entity);
     }
@@ -48,8 +47,8 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public boolean checkPassword(String password, String password1) {
-        return passwordEncoder.matches(password,password1) ;
+    public boolean checkPassword(String rawPassword, String encodedPassword) {
+        return passwordEncoder.matches(rawPassword, encodedPassword);
     }
 
     @Override
@@ -60,7 +59,7 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public void increaseFailedAttempts(AdminEntity adminEntity) {
-        adminEntity.setFailedAttempts(adminEntity.getFailedAttempts()+1);
+        adminEntity.setFailedAttempts(adminEntity.getFailedAttempts() + 1);
         repository.updateAdmin(adminEntity);
     }
 
@@ -75,13 +74,12 @@ public class AdminServiceImpl implements AdminService{
     public void generateUnlockToken(AdminEntity admin) {
         String token = UUID.randomUUID().toString();
         admin.setUnlockToken(token);
-        admin.setUnlockTokenExpiry(LocalDateTime.now().plusMinutes(15)); // 15 min validity
+        admin.setUnlockTokenExpiry(LocalDateTime.now().plusMinutes(15));
         repository.updateAdmin(admin);
     }
 
     @Override
     public void sendUnlockEmail(AdminEntity admin) {
-        //  String unlockLink = baseUrl + "/admin/unlock?token=" + admin.getUnlockToken();
         String unlockUrl = "http://localhost:9090/DairyManagement/unlock?token=" + admin.getUnlockToken();
         String subject = "Unlock Your HappyCow Admin Account";
         String body = "Hi " + admin.getAdminName() + ",\n\n"
@@ -97,8 +95,6 @@ public class AdminServiceImpl implements AdminService{
         message.setText(body);
 
         mailSender.send(message);
-        log.info("Unlock email sent to {}", admin.getEmailId());
-        log.info(body);
     }
 
     @Override

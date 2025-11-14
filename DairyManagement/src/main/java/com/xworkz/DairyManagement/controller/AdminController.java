@@ -5,6 +5,8 @@ import com.xworkz.DairyManagement.entity.AdminEntity;
 import com.xworkz.DairyManagement.repository.AdminRepository;
 import com.xworkz.DairyManagement.service.AdminService;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -24,14 +26,19 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 @Controller
-@Slf4j
+//@Slf4j
 public class AdminController {
 
     @Autowired
     AdminService adminService;
 
+    private static final Logger log = LoggerFactory.getLogger(AdminController.class);
+
+
     @GetMapping("/adminLoginForm")
     public String adminLoginForm(){
+        log.info("Home page requested");
+        log.debug("Debugging info: entering home method");
         return "adminLoginForm";
     }
 
@@ -294,6 +301,17 @@ public class AdminController {
         model.addAttribute("successMsg", "Profile updated successfully!");
 
         return "adminDashboard"; // This should be the JSP file name
+    }
+
+    @GetMapping("/adminLogout")
+    public String adminLogout(HttpSession session,RedirectAttributes redirectAttributes) {
+        AdminDto loggedInAdmin = (AdminDto) session.getAttribute("loggedInAdmin");
+        if (loggedInAdmin == null) {
+            return "redirect:/adminLoginForm";
+        }
+        session.invalidate();
+        redirectAttributes.addFlashAttribute("logoutMessage", "You have been logged out successfully!");
+        return "redirect:/adminLoginForm";
     }
 
 

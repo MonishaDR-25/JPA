@@ -39,6 +39,7 @@ public class AppConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry.addResourceHandler("/data/**").addResourceLocations("/data/");
         registry.addResourceHandler("/images/**").addResourceLocations("/images/");
+        registry.addResourceHandler("/uploads/**").addResourceLocations("/uploads/");
     }
 
     @Bean
@@ -87,8 +88,10 @@ public class AppConfig implements WebMvcConfigurer {
     @Bean
     public CommonsMultipartResolver multipartResolver() {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-        resolver.setMaxUploadSize(5 * 1024 * 1024); // 5MB
+        resolver.setMaxUploadSize(5 * 1024 * 1024);
         return resolver;
     }
+
+
 
 }

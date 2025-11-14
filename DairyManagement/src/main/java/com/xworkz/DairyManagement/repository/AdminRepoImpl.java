@@ -2,6 +2,7 @@ package com.xworkz.DairyManagement.repository;
 
 import com.xworkz.DairyManagement.entity.AdminAuditEntity;
 import com.xworkz.DairyManagement.entity.AdminEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,13 +12,15 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
 
 @Repository
+@Slf4j
 public class AdminRepoImpl implements AdminRepository {
 
     @Autowired
     EntityManagerFactory emf;
 
     public AdminRepoImpl() {
-        System.out.println("Created AdminRepositoryImpl");
+
+        log.info("Created AdminRepositoryImpl");
     }
 
     @Override
