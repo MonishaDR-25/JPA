@@ -89,6 +89,8 @@
     <a href="#">👥 Customers</a>
     <a href="#">📊 Reports</a>
     <a href="agentDashboard">✅ Agents</a>
+    <a href="productCollection">🧾 Product Collection</a>
+    <a href="productCollectionList.jsp">📋 View Collection List</a>
     <a href="#" class="logout">🚪 Logout</a>
 </div>
 

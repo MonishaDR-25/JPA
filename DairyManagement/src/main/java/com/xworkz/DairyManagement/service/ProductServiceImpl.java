@@ -98,4 +98,24 @@ public class ProductServiceImpl implements ProductService{
     public long getProductSearchCount(String trim) {
         return repository.getProductSearchCount(trim);
     }
+    
+    @Override
+    public List<ProductDto> findAllProducts() {
+        List<ProductEntity> productEntities = repository.findAllProducts();
+        if (productEntities == null || productEntities.isEmpty()) {
+            return Collections.emptyList();
+        }
+        
+        List<ProductDto> productDtos = new ArrayList<>();
+        for (ProductEntity entity : productEntities) {
+            if (entity.isActive()) { // Only include active products
+                ProductDto dto = new ProductDto();
+                BeanUtils.copyProperties(entity, dto);
+                productDtos.add(dto);
+            }
+        }
+        return productDtos;
+    }
+    
+
 }

@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @Table(name="product_info")
 @NamedQuery(name="findAllProducts",query="SELECT p FROM ProductEntity p")
 @NamedQuery(name="countProducts",query="SELECT COUNT(p) FROM ProductEntity p")
+@NamedQuery(name="findAllProductsByMilkTypes",query="SELECT p FROM ProductEntity p WHERE p.productType = 'Buy' AND p.active = true AND p.productName LIKE '%Milk%'")
 public class ProductEntity {
 
     @Id

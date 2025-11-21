@@ -82,6 +82,7 @@ public class AppConfig implements WebMvcConfigurer {
 
     @Bean
     public PasswordEncoder passwordEncoder(){
+
         return new BCryptPasswordEncoder();
     }
 

@@ -1,5 +1,6 @@
 package com.xworkz.DairyManagement.repository;
 
+import com.xworkz.DairyManagement.entity.ProductCollectionEntity;
 import com.xworkz.DairyManagement.entity.ProductEntity;
 
 import java.util.List;
@@ -20,4 +21,8 @@ public interface ProductRepository {
     List<ProductEntity> searchProducts(String trim, int start, int size);
 
     long getProductSearchCount(String trim);
+    
+    List<ProductEntity> findAllProducts();
+
+    List<ProductEntity> getAllProductsByTypesOfMilk();
 }

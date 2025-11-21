@@ -201,4 +201,48 @@ public class ProductRepoImpl implements ProductRepository{
             }
         }
     }
+    
+    @Override
+    public List<ProductEntity> findAllProducts() {
+        EntityManager em = null;
+        try {
+            em = emf.createEntityManager();
+            TypedQuery<ProductEntity> query = em.createNamedQuery("findAllProductsByMilkTypes", ProductEntity.class);
+            return query.getResultList();
+        } catch (PersistenceException e) {
+            System.err.println("Failed to fetch all products");
+            e.printStackTrace();
+            return Collections.emptyList();
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
+
+    @Override
+    public List<ProductEntity> getAllProductsByTypesOfMilk() {
+       EntityManager em=null;
+       try {
+           em = emf.createEntityManager();
+           String query = "SELECT DISTINCT a FROM ProductEntity a " +
+                   "WHERE a.active = true " +
+                   "AND a.productType = 'Buy' " +
+                   "AND a.productName LIKE '%Milk%'";
+           TypedQuery<ProductEntity> typedQuery = em.createQuery(query, ProductEntity.class);
+           List<ProductEntity> findAllProductsByTypesOfMilk=typedQuery.getResultList();
+
+           return findAllProductsByTypesOfMilk;
+
+       }catch (PersistenceException e){
+           return Collections.emptyList();
+       }finally {
+           if (em!=null && em.isOpen()) {
+               em.close();
+           }
+       }
+
+    }
+
+
 }

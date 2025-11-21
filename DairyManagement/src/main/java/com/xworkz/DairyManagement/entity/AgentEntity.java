@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "agent_info")
 @NamedQuery(name = "findAllAgents",query = "select a from AgentEntity a")
+@NamedQuery(name = "countAgents", query = "SELECT COUNT(a) FROM AgentEntity a")
 public class AgentEntity {
 
     @Id
@@ -32,4 +33,11 @@ public class AgentEntity {
 
     @Column(name="milk_type")
     private String milkType;
+
+    @Column(name = "profile_photo_path")
+    private String profilePhotoPath;
+
+
+
+
 }

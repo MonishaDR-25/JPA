@@ -6,6 +6,8 @@ import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 public interface ProductService {
+    List<ProductDto> findAllProducts();
+    
     List<ProductDto> getAllProducts(int page, int size);
 
     void saveProduct(ProductDto productDto,String adminName);
@@ -21,4 +23,6 @@ public interface ProductService {
     List<ProductDto> searchProducts(String trim, int page, int size);
 
     long getProductSearchCount(String trim);
+    
+
 }

@@ -1,9 +1,11 @@
 package com.xworkz.DairyManagement.controller;
 
 import com.xworkz.DairyManagement.dto.AdminDto;
+import com.xworkz.DairyManagement.dto.NotificationDto;
 import com.xworkz.DairyManagement.entity.AdminEntity;
 import com.xworkz.DairyManagement.repository.AdminRepository;
 import com.xworkz.DairyManagement.service.AdminService;
+import com.xworkz.DairyManagement.service.ProductCollectionNotificationService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,9 +26,10 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
-//@Slf4j
+
 public class AdminController {
 
     @Autowired
@@ -95,6 +98,10 @@ public class AdminController {
 //            log.info("Login successful for email: {} in {}ms",
 //                    email, System.currentTimeMillis() - startTime);
             log.info("Login successful for email: {}", adminDTO);
+
+            List<NotificationDto> notifications = notificationService.generateNotifications();
+            log.info("Generate Notifications: {}", notifications);
+            model.addAttribute("notifications", notifications);
 
             return "adminDashboard";
         } else {
@@ -291,7 +298,7 @@ public class AdminController {
         return "redirect:/adminDashboard"; // dashboard.jsp
     }*/
 
-    @GetMapping("/adminDashboard")
+  /*  @GetMapping("/adminDashboard")
     public String showAdminDashboard(HttpServletRequest request, Model model) {
         AdminDto loggedInAdmin = (AdminDto) request.getSession().getAttribute("loggedInAdmin");
         if (loggedInAdmin == null) {
@@ -301,7 +308,30 @@ public class AdminController {
         model.addAttribute("successMsg", "Profile updated successfully!");
 
         return "adminDashboard"; // This should be the JSP file name
+    }*/
+
+    @Autowired
+    private ProductCollectionNotificationService notificationService;
+
+
+    @GetMapping("/adminDashboard")
+    public String showAdminDashboard(HttpServletRequest request, Model model) {
+
+        AdminDto loggedInAdmin = (AdminDto) request.getSession().getAttribute("loggedInAdmin");
+        if (loggedInAdmin == null) {
+            return "redirect:/adminLoginForm";
+        }
+
+        model.addAttribute("loggedInAdmin", loggedInAdmin);
+
+        // Load notifications
+        List<NotificationDto> notifications = notificationService.generateNotifications();
+        log.info("Notifications: {}", notifications);
+        model.addAttribute("notifications", notifications);
+
+        return "adminDashboard";
     }
+
 
     @GetMapping("/adminLogout")
     public String adminLogout(HttpSession session,RedirectAttributes redirectAttributes) {
